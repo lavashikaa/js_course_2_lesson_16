@@ -7,6 +7,8 @@ function getCookie(name) {
     return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
+// console.log(getCookie('user'));
+
 
 function setCookie(name, value, options = {}) {
 
@@ -33,6 +35,15 @@ function setCookie(name, value, options = {}) {
     document.cookie = updatedCookie;
 }
 
+// let obj = {
+//     expires: 'Tue, 19 Jan 2038 03:14:07 GMT',
+//     samesite: true
+// }
+//
+// setCookie('vlad', 'sha', obj);
+
+// document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
+
 //
 // // Пример использования:
 // setCookie('user', 'John', {secure: true, 'max-age': 3600});
@@ -42,3 +53,5 @@ function deleteCookie(name) {
         'max-age': -1
     })
 }
+
+// deleteCookie('vlad');

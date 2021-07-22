@@ -1,34 +1,36 @@
-const form = document.getElementById('form-example');
+// let a = JSON.stringify(values);
+// console.log(a);
+// console.log(JSON.parse(a));
+// console.log(a)
 
-// form.addEventListener('submit', function (event) {
-//     event.preventDefault();
-//     let inputs = event.target.querySelectorAll('input, select, textarea');
-//     let formData = {};
-//
-//     for(let item of inputs) {
-//         formData[item.name] = item.value;
-//     }
-//
-//     localStorage.setItem(
-//         'formData',
-//         JSON.stringify(formData)
-//     );
-// });
-//
-//
-// function preFillForm() {
-//     if(localStorage.formData) {
-//
-//         let inputs = form.querySelectorAll('input, select, textarea');
-//         let parsedData = JSON.parse(localStorage.formData);
-//
-//         for(let item of inputs) {
-//             item.value = parsedData[item.name];
-//         }
-//
-//     } else {
-//         console.log('Юзер пришел первый раз!')
-//     }
-// }
-//
-// preFillForm();
+document.getElementById('form-example')
+    .addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let inputs = event.target.querySelectorAll('input, textarea, select');
+
+        let values = {};
+
+        inputs.forEach(function (item)  {
+            values[item.name] = item.value;
+        })
+        localStorage.setItem('form', JSON.stringify(values));
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    if(!localStorage.form) return;
+
+    let values = JSON.parse(localStorage.form);
+
+    let inputs = document.querySelectorAll('#form-example input, #form-example textarea, #form-example select');
+
+    for(let input of inputs) {
+        input.value = values[input.name]
+    }
+
+
+    console.log(inputs)
+
+
+})
