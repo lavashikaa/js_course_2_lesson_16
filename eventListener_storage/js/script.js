@@ -3,6 +3,14 @@
 // console.log(JSON.parse(a));
 // console.log(a)
 
+document.querySelector('.form-check-input').addEventListener('mousedown',function (){
+    document.querySelector('.form-check-input').setAttribute('value','true')
+})
+
+document.querySelector('.form-check-input').addEventListener('mousedown',function (){
+    document.querySelector('.form-check-input:checked').setAttribute('value','false')
+})
+
 document.getElementById('form-example')
     .addEventListener('submit', function (event) {
         event.preventDefault();
@@ -11,9 +19,12 @@ document.getElementById('form-example')
 
         let values = {};
 
+
         inputs.forEach(function (item)  {
             values[item.name] = item.value;
         })
+
+
         localStorage.setItem('form', JSON.stringify(values));
 });
 
@@ -29,8 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
         input.value = values[input.name]
     }
 
-
-    console.log(inputs)
+    console.log(values.terms ==='true')
+    console.log(document.querySelector('.form-check-input'))
+    if (values.terms ==='true'){
+        document.querySelector('.form-check-input').setAttribute('checked','true')
+        console.log(values.terms)
+    }
 
 
 })

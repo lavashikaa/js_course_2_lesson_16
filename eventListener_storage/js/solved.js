@@ -22,9 +22,12 @@ function preFillForm() {
         let inputs = form.querySelectorAll('input, select, textarea');
         let parsedData = JSON.parse(localStorage.formData);
 
+
         for(let item of inputs) {
             item.value = parsedData[item.name];
+
         }
+
 
     } else {
         console.log('Юзер пришел первый раз!')
